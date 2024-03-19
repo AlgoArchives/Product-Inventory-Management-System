@@ -135,3 +135,19 @@ END //
 
 -- Example usage of AddOrder procedure
 CALL AddOrder('John Doe', 2, 2);
+
+-- Create the roles table for user roles
+CREATE TABLE IF NOT EXISTS roles (
+    role_id INT PRIMARY KEY AUTO_INCREMENT,
+    role_name VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- Insert sample roles
+INSERT INTO roles (role_name) VALUES
+('admin'),
+('manager'),
+('staff');
+
+-- Add role_id column to users table
+ALTER TABLE users ADD COLUMN role_id INT,
+    ADD FOREIGN KEY (role_id) REFERENCES roles(role_id);
