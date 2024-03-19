@@ -46,6 +46,16 @@ document.addEventListener('click', function (event) {
         const productName = event.target.getAttribute('data-name');
         const productPrice = event.target.getAttribute('data-price');
         document.getElementById('productId').value = productId;
+    }
+});
+       
+// Handle buy button click to open buy modal
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('buy-btn')) {
+        const productId = event.target.getAttribute('data-id');
+        const productName = event.target.getAttribute('data-name');
+        const productPrice = event.target.getAttribute('data-price');
+        document.getElementById('productId').value = productId;
         document.getElementById('productName').innerText = `Product: ${productName}`;
         document.getElementById('productPrice').innerText = `Price: $${productPrice}`;
     }
