@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Product Inventory Management System</h1>
+        
+        <!-- Search form -->
+        <form id="searchForm" class="mb-3">
+            <input type="text" id="searchInput" class="form-control mr-2" placeholder="Search products">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        
+        <!-- Display products -->
+        <div id="productList" class="row"></div>
+
+        <!-- Buy form (modal) -->
+        <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buyModalLabel">Buy Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="productName"></p>
+                        <p id="productPrice"></p>
+                        <form id="buyForm">
+                            <input type="hidden" id="productId">
+                            <div class="form-group">
+                                <label for="quantityInput">Quantity:</label>
+                                <input type="number" id="quantityInput" class="form-control" min="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Buy</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
