@@ -199,3 +199,13 @@ END //
 
 -- Example usage of SearchProducts procedure
 CALL SearchProducts('laptop');
+
+-- Create stored procedure for inventory alerts
+DELIMITER //
+CREATE PROCEDURE CheckStockLevels()
+BEGIN
+    SELECT * FROM products WHERE quantity <= 5;
+END //
+
+-- Example usage of CheckStockLevels procedure
+CALL CheckStockLevels();
