@@ -151,3 +151,39 @@ INSERT INTO roles (role_name) VALUES
 -- Add role_id column to users table
 ALTER TABLE users ADD COLUMN role_id INT,
     ADD FOREIGN KEY (role_id) REFERENCES roles(role_id);
+
+-- Create stored procedure for user registration
+DELIMITER //
+CREATE PROCEDURE RegisterUser(
+    IN p_username VARCHAR(50),
+    IN p_password VARCHAR(255),
+    IN p_role_id INT
+)
+BEGIN
+    INSERT INTO users (username, password, role_id) VALUES (p_username, p_password, p_role_id);
+END //
+
+-- Create stored procedure for password hashing
+DELIMITER //
+CREATE PROCEDURE HashPassword(
+    IN p_password VARCHAR(255)
+)
+BEGIN
+    SELECT SHA256(p_password) AS hashed_password;
+END //
+
+-- Example usage of HashPassword procedure
+CALL HashPassword('your_password_here');
+
+-- Create stored procedure for password reset
+DELIMITER //
+CREATE PROCEDURE ResetPassword(
+    IN p_username VARCHAR(50),
+    IN p_new_password VARCHAR(255)
+)
+BEGIN
+    UPDATE users SET password = SHA256(p_new_password) WHERE username = p_username;
+END //
+
+-- Example usage of ResetPassword procedure
+CALL ResetPassword('admin', 'new_password_here');
