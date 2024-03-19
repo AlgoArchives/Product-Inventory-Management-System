@@ -209,3 +209,13 @@ END //
 
 -- Example usage of CheckStockLevels procedure
 CALL CheckStockLevels();
+
+-- Create stored procedure for sales report
+DELIMITER //
+CREATE PROCEDURE GenerateSalesReport()
+BEGIN
+    SELECT DATE(order_date) AS order_date, SUM(total_amount) AS total_sales FROM orders GROUP BY DATE(order_date);
+END //
+
+-- Example usage of GenerateSalesReport procedure
+CALL GenerateSalesReport();
