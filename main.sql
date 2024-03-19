@@ -187,3 +187,15 @@ END //
 
 -- Example usage of ResetPassword procedure
 CALL ResetPassword('admin', 'new_password_here');
+
+-- Create stored procedure for product search
+DELIMITER //
+CREATE PROCEDURE SearchProducts(
+    IN p_search_term VARCHAR(255)
+)
+BEGIN
+    SELECT * FROM products WHERE name LIKE CONCAT('%', p_search_term, '%') OR description LIKE CONCAT('%', p_search_term, '%');
+END //
+
+-- Example usage of SearchProducts procedure
+CALL SearchProducts('laptop');
