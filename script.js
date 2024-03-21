@@ -1,8 +1,11 @@
 // Fetch products from the database (mock data)
 const products = [
-    { id: 1, name: 'Laptop', description: 'High-performance laptop', price: 1200, quantity: 10 },
-    { id: 2, name: 'T-shirt', description: 'Cotton t-shirt', price: 20, quantity: 50 },
-    { id: 3, name: 'Python Programming Book', description: 'Introduction to Python programming', price: 35, quantity: 30 }
+    { id: 1, name: 'Laptop', description: 'High-performance laptop', price: 1200, quantity: 22 },
+    { id: 2, name: 'T-shirt', description: 'Cotton t-shirt', price: 20, quantity: 61 },
+    { id: 3, name: 'Python Programming Book', description: 'Introduction to Python programming', price: 35, quantity: 41 },
+    { id: 4, name: 'Headphones', description: 'Wireless headphones', price: 100, quantity: 31 },
+    { id: 5, name: 'Smartphone', description: 'Latest smartphone model', price: 800, quantity: 16 },
+    { id: 6, name: 'Watch', description: 'Stylish wristwatch', price: 250, quantity: 10 }
 ];
 
 // Display products on page load
@@ -39,16 +42,6 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     displayProducts(filteredProducts);
 });
 
-// Handle buy button click to open buy modal
-document.addEventListener('click', function (event) {
-    if (event.target.classList.contains('buy-btn')) {
-        const productId = event.target.getAttribute('data-id');
-        const productName = event.target.getAttribute('data-name');
-        const productPrice = event.target.getAttribute('data-price');
-        document.getElementById('productId').value = productId;
-    }
-});
-       
 // Handle buy button click to open buy modal
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('buy-btn')) {
