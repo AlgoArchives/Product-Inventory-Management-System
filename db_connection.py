@@ -1,18 +1,19 @@
 import mysql.connector
 
-# Connect to MySQL database
-try:
-    # Change to your database name and password
-    connection = mysql.connector.connect(
-        host='localhost',
-        user='username',
-        password='password',
-        database='inventory_db'
-    )
-    if connection.is_connected():
-        print('Connected to MySQL database')
-except mysql.connector.Error as e:
-    print('Error connecting to MySQL:', e)
+def connect_to_database():
+    try:
+        connection = mysql.connector.connect(
+            host='localhost',
+            user='username',
+            password='password',
+            database='inventory_db'
+        )
+        if connection.is_connected():
+            print('Connected to MySQL database')
+            return connection
+    except mysql.connector.Error as e:
+        print('Error connecting to MySQL:', e)
+        return None
 
 def update_price(product_id, new_price):
     try:
